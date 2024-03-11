@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enum\ApplicationBackgroundColor;
+use App\Enum\ApplicationColor;
+use App\Enum\ApplicationStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +12,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ApplicationImageFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'color' => fake()->randomElement([ApplicationColor::White, ApplicationColor::Black]),
+            'background' => fake()->randomElement([ApplicationBackgroundColor::GreenBackground, ApplicationBackgroundColor::OrangeBackground, ApplicationBackgroundColor::TurquoiseBackground, ApplicationBackgroundColor::PurpleBackground]),
+            'status' => fake()->randomElement([ApplicationStatus::Done, ApplicationStatus::In_Progress, ApplicationStatus::Created, ApplicationStatus::Rejected])
         ];
     }
 }
