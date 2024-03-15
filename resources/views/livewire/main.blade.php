@@ -13,14 +13,14 @@
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">WayUp City</a>
+                <a class="navbar-brand" href="{{ route('main') }}">WayUp City</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Заявки</a>
+                            <a class="nav-link" href="{{ route('main') }}">Заявки</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +28,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="add-ticket.html">Добавить</a></li>
-                                <li><a class="dropdown-item" href="my-tickets.html">Мои заявки <span class="badge bg-secondary">4</span></a></li>
+                                <li><a class="dropdown-item" href="{{ route('my-tickets') }}">Мои заявки <span class="badge bg-secondary">4</span></a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -61,24 +61,29 @@
             <div class="row">
                 <h2 class="display-6 mb-3">Заявки</h2>
             </div>
+            @foreach ($applications as $application)
             <div class="row">
+                @foreach ($application->images as $image)
                 <div class="card mb-3">
-                    <img src="src/static/image-2.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Отремонтировать асфальт <span class="badge bg-warning text-dark">В процессе</span> </h5>
-                        <p class="card-text">Возле дороги на улице Ейдемана рядом с Политическим колледжем образовалась опасная яма.</p>
-                        <p class="card-text"><small class="text-muted">Добавлено: 24.12.2021</small></p>
+                    <img src="{{ $application->image }}" style="width: 50%" class="card-img-top" alt="...">
+                    <div class="card-body" >
+                        <h5 class="card-title">{{ $application->name}}<span class=" rounded-pill {{ $image->color }}" style="background-color: {{ $image->background }}">{{ $image->status }}</span> </h5>
+                        <p class="card-text">{{ $application->description }}</p>
+                        <p class="card-text"><small class="text-muted">{{ date($application->created_at) }}</small></p>
                     </div>
                 </div>
+                
                 <div class="card mb-3">
-                    <img src="src/static/image-1.jpg" class="card-img-top" alt="...">
+                    <img src="{{ $application->image }}" style="width: 50%" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Убрать мусор <span class="badge bg-success">Выполнено</span> </h5>
-                        <p class="card-text">В нашем районе стали складировать много мусора, никто не убирает..</p>
-                        <p class="card-text"><small class="text-muted">Добавлено: 24.12.2021</small></p>
+                        <h5 class="card-title">{{ $application->name}}<span class=" rounded-pill {{ $image->color }}" style="background: {{ $image->background }}">{{ $image->status }}</span> </h5>
+                        <p class="card-text">{{ $application->description }}</p>
+                        <p class="card-text"><small class="text-muted">{{ date($application->created_at) }}</small></p>
                     </div>
                 </div>
+                @endforeach
             </div>
+            @endforeach
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>

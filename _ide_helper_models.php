@@ -23,6 +23,20 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Application newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Application query()
  * @mixin \Eloquent
+ * @property int $id
+ * @property int|null $user_id
+ * @property string|null $name
+ * @property string|null $description
+ * @property string|null $image
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereUserId($value)
  */
 	class Application extends \Eloquent {}
 }
@@ -40,6 +54,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage query()
  * @mixin \Eloquent
+ * @property int $id
+ * @property int|null $application_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage whereApplicationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage whereBackground($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage whereColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ApplicationImage whereUpdatedAt($value)
  */
 	class ApplicationImage extends \Eloquent {}
 }
