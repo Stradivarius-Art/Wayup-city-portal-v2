@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <link rel="stylesheet" href="src/scss/app.css">
 </head>
@@ -59,49 +59,31 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                Регистрация
+                Авторизация
             </div>
             <div class="card-body">
-                <form action="{{ route('register.store') }}" method="post">
+                <form action="{{ route('signIn') }}" method="post" autocomplete="off">
                     @csrf
                     <div class="mb-3">
-                        <label for="emailRegisterField" class="form-label">E-mail</label>
-                        <input type="text" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="emailRegisterField" aria-describedby="emailHelp">
+                        <label for="emailField" class="form-label">E-mail</label> 
+                        <input type="text" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="emailField" aria-describedby="emailHelp">
                         @error('email')
                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                         {{ $message }}
-                        <div>
-                        @enderror
-                        <div id="emailRegisterHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fullNameField" class="form-label">Имя</label>
-                        <input type="text" name="name" value="{{ old('email') }}" class="form-control @error('name') is-invalid @enderror" id="fullNameField" aria-describedby="emailHelp">
-                        @error('name')
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        {{ $message }}
                         </div>
                         @enderror
+                        <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="passwordRegisterField" class="form-label">Пароль</label>
-                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="passwordRegisterField">
+                        <label for="passwordField" class="form-label">Пароль</label> 
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="passwordField">
                         @error('password')
                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                         {{ $message }}
                         </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="passwordConfirmField" class="form-label">Подтверждение пароля</label>
-                        <input type="password" name="password.confirmation" class="form-control  @error('password') is-invalid @enderror" id="passwordConfirmField">
-                        @error('password')
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <button type="submit" class="btn btn-primary">Создать аккаунт</button>
+                    <button type="submit" class="btn btn-primary">Войти</button>
                 </form>
             </div>
         </div>

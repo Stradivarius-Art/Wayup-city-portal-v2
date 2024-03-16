@@ -42,8 +42,8 @@
                                     Аккаунт
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                                    <li><a class="dropdown-item" href="login.html">Вход</a></li>
-                                    <li><a class="dropdown-item" href="register.html">Регистрация</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('login.index') }}">Вход</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('register.index') }}">Регистрация</a></li>
                                 </ul>
                             </li>
                         </ul>
