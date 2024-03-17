@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Applications;
 
 use App\Facades\Application;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -16,5 +17,11 @@ class ApplicationController extends Controller
     public function show()
     {
         return view('pages.my-tickets');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('signIn');
     }
 }

@@ -35,23 +35,30 @@
                             <a href="tickets-control.html" class="nav-link">Управление заявками</a>
                         </li>
                     </ul>
-                    <div class="right-side d-flex">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Аккаунт
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('login.index') }}">Вход</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('register.index') }}">Регистрация</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Поиск заявок" aria-label="Поиск заявок">
-                            <button class="btn btn-outline-success" type="submit">Поиск</button>
+                        @if (auth()->check())
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Выйти</button>
                         </form>
-                    </div>
+                        @else
+                        <div class="right-side d-flex">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Аккаунт
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                                        <li><a class="dropdown-item" href="{{ route('login.index') }}">Вход</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('register.index') }}">Регистрация</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Поиск заявок" aria-label="Поиск заявок">
+                                <button class="btn btn-outline-success" type="submit">Поиск</button>
+                            </form>
+                        </div>
+                        @endif
                 </div>
             </div>
         </nav>
