@@ -2,22 +2,22 @@
 
 namespace App\Livewire;
 
-use App\Http\Controllers\Applications\ApplicationController;
-use App\Models\Application;
-use App\Models\ApplicationImage;
-use Illuminate\Database\Eloquent\Collection;
-use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Illuminate\Support\Facades\Http;
 
 #[Title('Main')]
 class Main extends Component
 {
+    public $applications;
+
+    public function mount()
+    {
+        $response = Http::get('http://127.0.0.1:8081/api/application');
+        $this->applications = json_decode($response->body(), true);
+    }
     public function render()
     {
-        $applications = Application::get();
-
-        return view('livewire.main', [
-            'applications' => $applications
-        ]);
+        return view('livewire.main');
     }
 }
