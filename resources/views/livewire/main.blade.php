@@ -63,22 +63,22 @@
             </div>
             @foreach ($applications as $application)
             <div class="row">
-                @foreach ($application->images as $image)
+                @foreach ($application['application_images'] as $image)
                 <div class="card mb-3">
-                    <img src="{{ $application->image }}" style="width: 50%" class="card-img-top" alt="...">
+                    <img src="{{ $application['image'] }}" style="width: 50%" class="card-img-top" alt="...">
                     <div class="card-body" >
-                        <h5 class="card-title">{{ $application->name}}<span class=" rounded-pill {{ $image->color }}" style="background-color: {{ $image->background }}">{{ $image->status }}</span> </h5>
-                        <p class="card-text">{{ $application->description }}</p>
-                        <p class="card-text"><small class="text-muted">{{ date($application->created_at) }}</small></p>
+                        <h5 class="card-title">{{ $application['name']}}<span class="rounded-pill {{ $image['color'] }}" style="background-color: {{ $image['background']}}">{{ $image['status'] }}</span> </h5>
+                        <p class="card-text">{{ $application['description'] }}</p>
+                        <p class="card-text"><small class="text-muted">{{ $application['created_at'] }}</small></p>
                     </div>
                 </div>
                 
                 <div class="card mb-3">
-                    <img src="{{ $application->image }}" style="width: 50%" class="card-img-top" alt="...">
+                    <img src="{{ $application['image']}}" style="width: 50%" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $application->name}}<span class=" rounded-pill {{ $image->color }}" style="background: {{ $image->background }}">{{ $image->status }}</span> </h5>
-                        <p class="card-text">{{ $application->description }}</p>
-                        <p class="card-text"><small class="text-muted">{{ date($application->created_at) }}</small></p>
+                        <h5 class="card-title">{{ $application['name']}}<span class="rounded-pill {{ $image['color'] }}" style="background-color: {{ $image['background']}}">{{ $image['status'] }}</span> </h5>
+                        <p class="card-text">{{ $application['description'] }}</p>
+                        <p class="card-text"><small class="text-muted">{{ $application['created_at'] }}</small></p>
                     </div>
                 </div>
                 @endforeach
