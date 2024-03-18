@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Resources\GetApplication;
 use App\Services\ApplicationService;
+use App\Services\AuthenticationService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind('application', ApplicationService::class);
+        $this->app->bind('user', AuthenticationService::class);
     }
 
     /**
